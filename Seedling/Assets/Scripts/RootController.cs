@@ -11,7 +11,7 @@ public class RootController : MonoBehaviour
     private Vector3 startPos;
 
     public GameObject staticRoot;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +26,15 @@ public class RootController : MonoBehaviour
 
         transform.Translate(Vector2.up * speed * Time.deltaTime);
 
-        if(Vector3.Distance(startPos, transform.position) >= spawnDistance)
+        if (Vector3.Distance(startPos, transform.position) >= spawnDistance)
         {
             startPos = transform.position;
-            Debug.Log("Spawning new root at old position");
             Instantiate(staticRoot, transform.position, transform.rotation);
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Hit something");
     }
 }
