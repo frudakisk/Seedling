@@ -377,8 +377,10 @@
 -analyzer:"/Applications/Unity/Hub/Editor/2022.3.6f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/Applications/Unity/Hub/Editor/2022.3.6f1/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/attachCamera.cs"
+"Assets/Scripts/CanvasController.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/RootController.cs"
+"Assets/Scripts/WaterHoleBehaviour.cs"
 -langversion:9.0
 
 /deterministic

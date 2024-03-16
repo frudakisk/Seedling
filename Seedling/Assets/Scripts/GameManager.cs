@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public float yHeight;
 
     public static bool gameOver;
+    public static bool gameOn;
+    private bool alreadyOn;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +22,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)) && !alreadyOn)
+        {
+            alreadyOn = true;
+            gameOn = true;
+        }
     }
 
     private void SpawnRocks()

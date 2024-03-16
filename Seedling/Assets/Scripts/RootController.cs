@@ -16,8 +16,10 @@ public class RootController : MonoBehaviour
     private Color startColor;
     private Color endColor = new Color(0.8867924f, 0.6829652f, 0.5396048f);
     private Color currentColor;
-    private float transitionDuration = 5f;
+    private float transitionDuration = 20f;
     private float timer = 0f;
+
+    private bool routineStarted;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +27,12 @@ public class RootController : MonoBehaviour
         startPos = transform.position;
         spriteRenderer = GetComponent<SpriteRenderer>();
         startColor = spriteRenderer.color;
-        StartCoroutine(DryingUp());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!GameManager.gameOver)
+        if(GameManager.gameOn && !GameManager.gameOver)
         {
             horizontalInput = Input.GetAxis("Horizontal");
             transform.Rotate(Vector3.back * horizontalInput * rotationSpeed * Time.deltaTime);
@@ -39,6 +40,12 @@ public class RootController : MonoBehaviour
             transform.Translate(Vector2.up * speed * Time.deltaTime);
         }
 
+        //play coroutine only once when game is on
+        if(GameManager.gameOn && !routineStarted)
+        {
+            routineStarted = true;
+            StartCoroutine(DryingUp());
+        }
 
         if (Vector3.Distance(startPos, transform.position) >= spawnDistance)
         {
@@ -53,8 +60,11 @@ public class RootController : MonoBehaviour
         if(collision.gameObject.CompareTag("rock"))
         {
             Debug.Log("player hit a rock. Game Over!");
-        } else if (collision.gameObject.CompareTag("water"))
+            //GameManager.gameOver = true;
+        } else if (collision.gameObject.CompareTag("water")
+            && collision.gameObject.GetComponent<WaterHoleBehaviour>().hasWater)
         {
+            collision.gameObject.GetComponent<WaterHoleBehaviour>().hasWater = false;
             timer = 0f;
             spriteRenderer.color = startColor;
         }
