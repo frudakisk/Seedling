@@ -65,21 +65,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Checks if position is near a water hole position
+    /// </summary>
+    /// <param name="pos"></param>
+    /// <returns>return true if the pos is close to a water hole,
+    /// false if it is not close to any water holes</returns>
     private bool isNearWater(Vector3 pos)
     {
         //need to find all water pockets that are active in the scene
-        Debug.Log($"Num of water holes: {waterHoles.Length}");
         foreach(WaterHoleBehaviour obj in waterHoles)
         {
-            Debug.Log(Vector3.Distance(obj.transform.position, pos));
             if(Vector3.Distance(obj.transform.position, pos) < 3.0f)
             {
                 //Too close to a waterhole
-                Debug.Log("Too Close. Create a new distance");
                 return true;
             }
         }
-        Debug.Log("Far enough from all water holes");
         return false;
 
     }
