@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startText: {fileID: 1638458217}
+  timerText: {fileID: 317764806}
 --- !u!114 &602378745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -604,9 +605,11 @@ MonoBehaviour:
   - {fileID: 7083038426302577871, guid: 8b1ceb17906c44f7db2fb0df0a68d4ad, type: 3}
   - {fileID: 7772194885114074127, guid: 32b8f397433994334ba3d0d2b51edd17, type: 3}
   - {fileID: 1617611844311581350, guid: 51434ac5712144d0db953bae6e4fa3c7, type: 3}
+  waterPocket: {fileID: 8717041897717326022, guid: f0014150402cd4c3a9f0362101a83d6a, type: 3}
   numRocks: 50
   xRange: 10
   yHeight: 50
+  numWaterHoles: 3
 --- !u!4 &1378498014
 Transform:
   m_ObjectHideFlags: 0
