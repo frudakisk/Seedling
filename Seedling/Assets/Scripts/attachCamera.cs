@@ -7,15 +7,39 @@ public class attachCamera : MonoBehaviour
     public Transform player;
     [SerializeField] private float offset;
 
+    [SerializeField] private Vector3 startPos;
+    [SerializeField] private Vector3 endPos;
+    [SerializeField] private float speed;
+    [SerializeField] private float startTime;
+    [SerializeField] private float journeyLength;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        startTime = Time.time;
+        journeyLength = Vector3.Distance(startPos, endPos);
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-        transform.position = new Vector3(player.position.x, (player.position.y + offset), -10f);
+        float distCovered = (Time.time - startTime) * speed;
+        float fracJourney = distCovered / journeyLength;
+        transform.position = Vector3.Lerp(startPos, endPos, fracJourney);
+
+        if(GameManager.gameOn)
+        {
+            transform.position = new Vector3(player.position.x, (player.position.y + offset), -10f);
+        }
+        //if(!GameManager.gameOn)
+        //{
+        //    Camera.main.orthographicSize = zoomedOutSize;
+        //    Camera.main.transform.position = zoomedOutPosition;
+        //}
+        //else
+        //{
+        //    Camera.main.orthographicSize = zoomedInSize;
+        //    transform.position = new Vector3(player.position.x, (player.position.y + offset), -10f);
+        //}
     }
 }
