@@ -70,6 +70,14 @@ public class RootController : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name == "Win Trigger")
+        {
+            Debug.Log("You win! spawn in the flower!");
+        }
+    }
+
 
     /// <summary>
     /// Changed the color of the root gradually until it dies.
