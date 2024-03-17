@@ -10,9 +10,12 @@ public class CanvasController : MonoBehaviour
     public TextMeshProUGUI startText;
     public TextMeshProUGUI timerText;
     public Button resetButton;
+    public GameObject gameOverPanel;
 
     private float timer;
     private bool routineOn;
+
+    private bool panelActive;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,12 @@ public class CanvasController : MonoBehaviour
                 StartCoroutine(Timer());
             }
         }
+
+        if(GameManager.gameOver && !panelActive)
+        {
+            panelActive = true;
+            StartCoroutine(ShowGameOverPanel());
+        }
         
     }
 
@@ -46,6 +55,13 @@ public class CanvasController : MonoBehaviour
 
     }
 
+    private IEnumerator ShowGameOverPanel()
+    {
+        yield return new WaitForSeconds(3.0f);
+        gameOverPanel.SetActive(!gameOverPanel.activeSelf);
+        
+    }
+
     private void UpdateTimer(float time)
     {
         string minutes = Mathf.Floor(time / 60).ToString("00");
@@ -56,5 +72,13 @@ public class CanvasController : MonoBehaviour
     public void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.gameOver = false;
+        GameManager.gameOn = false;
     }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }

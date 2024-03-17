@@ -61,7 +61,7 @@ public class RootController : MonoBehaviour
         if(collision.gameObject.CompareTag("rock") || collision.gameObject.CompareTag("wall"))
         {
             Debug.Log("player hit a rock or wall. Game Over!");
-            //GameManager.gameOver = true;
+            GameManager.gameOver = true;
         } else if (collision.gameObject.CompareTag("water")
             && collision.gameObject.GetComponent<WaterHoleBehaviour>().hasWater)
         {
