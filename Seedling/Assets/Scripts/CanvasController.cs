@@ -7,8 +7,11 @@ using UnityEngine.UI;
 
 public class CanvasController : MonoBehaviour
 {
+    private RootController player;
+
     public TextMeshProUGUI startText;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI gameOverText;
     public Button resetButton;
     public GameObject gameOverPanel;
 
@@ -19,7 +22,7 @@ public class CanvasController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.Find("root").GetComponent<RootController>();
     }
 
     // Update is called once per frame
@@ -57,6 +60,14 @@ public class CanvasController : MonoBehaviour
 
     private IEnumerator ShowGameOverPanel()
     {
+        if(player.playerWon)
+        {
+            gameOverText.text = $"You Won!\n{timerText.text}";
+        }
+        else
+        {
+            gameOverText.text = "Game Over";
+        }
         yield return new WaitForSeconds(3.0f);
         gameOverPanel.SetActive(!gameOverPanel.activeSelf);
         
@@ -79,6 +90,8 @@ public class CanvasController : MonoBehaviour
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene(0);
+        GameManager.gameOver = false;
+        GameManager.gameOn = false;
     }
 
 }

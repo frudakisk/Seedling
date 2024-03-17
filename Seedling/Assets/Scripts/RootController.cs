@@ -21,6 +21,7 @@ public class RootController : MonoBehaviour
     private float timer = 0f;
 
     private bool routineStarted;
+    public bool playerWon;
 
     // Start is called before the first frame update
     void Start()
@@ -76,7 +77,8 @@ public class RootController : MonoBehaviour
         if(collision.gameObject.name == "Win Trigger")
         {
             Debug.Log("You win! spawn in the flower!");
-            Vector3 offsetPos = new Vector3(0.4f, 2f, 0);
+            playerWon = true;
+            Vector3 offsetPos = new Vector3(0.4f, 2f, -1f);
             Quaternion spawnRotation = Quaternion.Euler(Vector3.zero);
             Instantiate(flower, transform.position + offsetPos, spawnRotation);
             GameManager.gameOver = true;
