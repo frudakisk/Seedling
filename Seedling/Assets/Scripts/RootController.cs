@@ -11,6 +11,7 @@ public class RootController : MonoBehaviour
     private Vector3 startPos;
 
     public GameObject staticRoot;
+    public GameObject flower;
 
     private SpriteRenderer spriteRenderer;
     private Color startColor;
@@ -60,13 +61,25 @@ public class RootController : MonoBehaviour
         if(collision.gameObject.CompareTag("rock") || collision.gameObject.CompareTag("wall"))
         {
             Debug.Log("player hit a rock or wall. Game Over!");
-            GameManager.gameOver = true;
+            //GameManager.gameOver = true;
         } else if (collision.gameObject.CompareTag("water")
             && collision.gameObject.GetComponent<WaterHoleBehaviour>().hasWater)
         {
             collision.gameObject.GetComponent<WaterHoleBehaviour>().hasWater = false;
             timer = 0f;
             spriteRenderer.color = startColor;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.name == "Win Trigger")
+        {
+            Debug.Log("You win! spawn in the flower!");
+            Vector3 offsetPos = new Vector3(0.4f, 2f, 0);
+            Quaternion spawnRotation = Quaternion.Euler(Vector3.zero);
+            Instantiate(flower, transform.position + offsetPos, spawnRotation);
+            GameManager.gameOver = true;
         }
     }
 
