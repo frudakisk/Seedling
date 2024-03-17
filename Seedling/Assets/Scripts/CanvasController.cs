@@ -7,16 +7,22 @@ using UnityEngine.UI;
 
 public class CanvasController : MonoBehaviour
 {
+    private RootController player;
+
     public TextMeshProUGUI startText;
     public TextMeshProUGUI timerText;
+    public TextMeshProUGUI gameOverText;
     public Button resetButton;
+    public GameObject gameOverPanel;
 
-    private float timer;
+    private int timer;
     private bool routineOn;
+
+    private bool panelActive;
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.Find("root").GetComponent<RootController>();
     }
 
     // Update is called once per frame
@@ -32,7 +38,22 @@ public class CanvasController : MonoBehaviour
                 StartCoroutine(Timer());
             }
         }
+
+        if(GameManager.gameOver && !panelActive)
+        {
+            CompareHighscore();
+            panelActive = true;
+            StartCoroutine(ShowGameOverPanel());
+        }
         
+    }
+
+    private void CompareHighscore()
+    {
+        if(timer < DataManager.Instance.highscoreTime && player.playerWon)
+        {
+            DataManager.Instance.highscoreTime = timer;
+        }
     }
 
     private IEnumerator Timer()
@@ -46,6 +67,21 @@ public class CanvasController : MonoBehaviour
 
     }
 
+    private IEnumerator ShowGameOverPanel()
+    {
+        if(player.playerWon)
+        {
+            gameOverText.text = $"You Won!\n{timerText.text}";
+        }
+        else
+        {
+            gameOverText.text = "Game Over";
+        }
+        yield return new WaitForSeconds(3.0f);
+        gameOverPanel.SetActive(!gameOverPanel.activeSelf);
+        
+    }
+
     private void UpdateTimer(float time)
     {
         string minutes = Mathf.Floor(time / 60).ToString("00");
@@ -56,5 +92,15 @@ public class CanvasController : MonoBehaviour
     public void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.gameOver = false;
+        GameManager.gameOn = false;
     }
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+        GameManager.gameOver = false;
+        GameManager.gameOn = false;
+    }
+
 }
