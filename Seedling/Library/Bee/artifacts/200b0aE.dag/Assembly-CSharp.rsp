@@ -380,6 +380,7 @@
 "Assets/Scripts/attachCamera.cs"
 "Assets/Scripts/CanvasController.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/MainMenu Scripts/DataManager.cs"
 "Assets/Scripts/MainMenu Scripts/MainMenuCanvas.cs"
 "Assets/Scripts/RootController.cs"
 "Assets/Scripts/WaterHoleBehaviour.cs"

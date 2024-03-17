@@ -15,7 +15,7 @@ public class CanvasController : MonoBehaviour
     public Button resetButton;
     public GameObject gameOverPanel;
 
-    private float timer;
+    private int timer;
     private bool routineOn;
 
     private bool panelActive;
@@ -41,10 +41,19 @@ public class CanvasController : MonoBehaviour
 
         if(GameManager.gameOver && !panelActive)
         {
+            CompareHighscore();
             panelActive = true;
             StartCoroutine(ShowGameOverPanel());
         }
         
+    }
+
+    private void CompareHighscore()
+    {
+        if(timer < DataManager.Instance.highscoreTime && player.playerWon)
+        {
+            DataManager.Instance.highscoreTime = timer;
+        }
     }
 
     private IEnumerator Timer()
