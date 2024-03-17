@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -3171,34 +3171,6 @@ PrefabInstance:
     - target: {fileID: 1425901153458812307, guid: d6b1eca7de48a4aa189e8d825a733c10, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3573277457670533590, guid: d6b1eca7de48a4aa189e8d825a733c10, type: 3}
-      propertyPath: m_Color.b
-      value: 0.15991703
-      objectReference: {fileID: 0}
-    - target: {fileID: 3573277457670533590, guid: d6b1eca7de48a4aa189e8d825a733c10, type: 3}
-      propertyPath: m_Color.g
-      value: 0.5566038
-      objectReference: {fileID: 0}
-    - target: {fileID: 3573277457670533590, guid: d6b1eca7de48a4aa189e8d825a733c10, type: 3}
-      propertyPath: m_Color.r
-      value: 0.107645065
-      objectReference: {fileID: 0}
-    - target: {fileID: 3586044388717943833, guid: d6b1eca7de48a4aa189e8d825a733c10, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3883914037490084374, guid: d6b1eca7de48a4aa189e8d825a733c10, type: 3}
-      propertyPath: flower
-      value: 
-      objectReference: {fileID: 1265401336669143333, guid: e15c36b7bce3844a5ba4bf6093d8f446, type: 3}
-    - target: {fileID: 3883914037490084374, guid: d6b1eca7de48a4aa189e8d825a733c10, type: 3}
-      propertyPath: staticRoot
-      value: 
-      objectReference: {fileID: 4092862274669201504, guid: e3a77e2ef40274b5d8912f7eae898c8f, type: 3}
-    - target: {fileID: 3883914037490084374, guid: d6b1eca7de48a4aa189e8d825a733c10, type: 3}
-      propertyPath: spawnDistance
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7940108380045206714, guid: d6b1eca7de48a4aa189e8d825a733c10, type: 3}
       propertyPath: m_Name
