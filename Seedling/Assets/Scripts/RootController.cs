@@ -23,6 +23,8 @@ public class RootController : MonoBehaviour
     private bool routineStarted;
     public bool playerWon;
 
+    public ParticleSystem explosionParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +65,9 @@ public class RootController : MonoBehaviour
         {
             Debug.Log("player hit a rock or wall. Game Over!");
             GameManager.gameOver = true;
+            Vector3 offset = new Vector3(0, 0.5f, 0);
+            ParticleSystem particles = Instantiate(explosionParticles, transform.position + offset, Quaternion.identity);
+            particles.Play();
         } else if (collision.gameObject.CompareTag("water")
             && collision.gameObject.GetComponent<WaterHoleBehaviour>().hasWater)
         {
