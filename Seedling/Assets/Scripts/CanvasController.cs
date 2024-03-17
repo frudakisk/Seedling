@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class CanvasController : MonoBehaviour
 {
     public TextMeshProUGUI startText;
     public TextMeshProUGUI timerText;
+    public Button resetButton;
 
     private float timer;
     private bool routineOn;
@@ -22,6 +25,7 @@ public class CanvasController : MonoBehaviour
         if (GameManager.gameOn)
         {
             startText.gameObject.SetActive(false);
+            resetButton.gameObject.SetActive(false);
             if(!routineOn)
             {
                 routineOn = true;
@@ -47,5 +51,10 @@ public class CanvasController : MonoBehaviour
         string minutes = Mathf.Floor(time / 60).ToString("00");
         string seconds = (time % 60).ToString("00");
         timerText.text = $"Time: {minutes}:{seconds}";
+    }
+
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
