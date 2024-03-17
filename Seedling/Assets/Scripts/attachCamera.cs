@@ -29,17 +29,7 @@ public class attachCamera : MonoBehaviour
 
         if(GameManager.gameOn)
         {
-            transform.position = new Vector3(player.position.x, (player.position.y + offset), -10f);
+            transform.position = new Vector3(0f, (player.position.y + offset), -10f);
         }
-        //if(!GameManager.gameOn)
-        //{
-        //    Camera.main.orthographicSize = zoomedOutSize;
-        //    Camera.main.transform.position = zoomedOutPosition;
-        //}
-        //else
-        //{
-        //    Camera.main.orthographicSize = zoomedInSize;
-        //    transform.position = new Vector3(player.position.x, (player.position.y + offset), -10f);
-        //}
     }
 }
