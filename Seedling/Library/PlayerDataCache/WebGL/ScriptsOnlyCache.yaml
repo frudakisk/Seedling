@@ -935,7 +935,7 @@ ScriptsOnlyBuild:
     className: AspectRatioFitter
   - hash:
       serializedVersion: 2
-      Hash: 9779450fd147b00f9e465b87fbed61b8
+      Hash: dfe9a83ee141659eaa59e39ea91d25aa
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: GameManager
@@ -1289,7 +1289,7 @@ ScriptsOnlyBuild:
     className: RootController
   - hash:
       serializedVersion: 2
-      Hash: 3c74255c14786553043b8c31049785ac
+      Hash: 68500488655a8eecfa719bf962f7e6dd
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: DataManager
