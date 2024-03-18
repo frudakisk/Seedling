@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviour
             GameObject rock = Instantiate(rockObjects[randomRock], randPos, Quaternion.identity);
             float randomRotation = Random.Range(0, 360f);
             rock.transform.rotation = Quaternion.Euler(0f, 0f, randomRotation);
-            float randomeScale = Random.Range(0.5f, 3f);
+            float randomeScale = Random.Range(0.5f, 2.5f);
             rock.transform.localScale = new Vector3(randomeScale, randomeScale, randomeScale);
         }
     }
