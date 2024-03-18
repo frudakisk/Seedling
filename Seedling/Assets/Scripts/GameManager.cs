@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     private WaterHoleBehaviour[] waterHoles;
     public int numWaterHoles;
 
+    public GameObject fertilizer;
+    public int numFertilizers;
+
     public static bool gameOver;
     public static bool gameOn;
     private bool alreadyOn;
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
     {
         //spawn water pockets first
         SpawnWaterHoles();
+        SpawnFertilizer();
         waterHoles = FindAllActiveWaterPockets();
         SpawnRocks();
     }
@@ -42,6 +46,15 @@ public class GameManager : MonoBehaviour
         {
             Vector3 randPos = new Vector3(Random.Range(-xRange, xRange), Random.Range(0, yHeight), 0);
             Instantiate(waterPocket, randPos, Quaternion.identity);
+        }
+    }
+
+    private void SpawnFertilizer()
+    {
+        for(int i = 0; i < numFertilizers; i++)
+        {
+            Vector3 randPos = new Vector3(Random.Range(-xRange, xRange), Random.Range(0, yHeight), 0);
+            Instantiate(fertilizer, randPos, Quaternion.identity);
         }
     }
 
