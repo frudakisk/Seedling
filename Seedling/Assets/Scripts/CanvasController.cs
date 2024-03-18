@@ -75,9 +75,10 @@ public class CanvasController : MonoBehaviour
     {
         while (!GameManager.gameOver)
         {
+            UpdateTimer(timer);
             yield return null;
             timer += Time.deltaTime;
-            UpdateTimer(timer);
+            
         }
 
     }

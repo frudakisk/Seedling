@@ -2012,6 +2012,8 @@ MonoBehaviour:
   xRange: 10
   yHeight: 50
   numWaterHoles: 4
+  fertilizer: {fileID: 1396771523027851986, guid: 9a723438f30ef4fb3938298c5c881774, type: 3}
+  numFertilizers: 2
 --- !u!4 &1378498014
 Transform:
   m_ObjectHideFlags: 0

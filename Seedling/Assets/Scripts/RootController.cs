@@ -72,6 +72,10 @@ public class RootController : MonoBehaviour
             collision.gameObject.GetComponent<WaterHoleBehaviour>().hasWater = false;
             timer = 0f;
             spriteRenderer.color = startColor;
+        } else if (collision.gameObject.CompareTag("fertilizer"))
+        {
+            StartCoroutine(SpeedUpRoot());
+            Destroy(collision.gameObject);
         }
     }
 
@@ -119,5 +123,14 @@ public class RootController : MonoBehaviour
         Vector3 offset = new Vector3(0, 0.5f, 0);
         ParticleSystem particles = Instantiate(explosionParticles, transform.position + offset, Quaternion.identity);
         particles.Play();
+    }
+
+    private IEnumerator SpeedUpRoot()
+    {
+        speed *= 1.5f;
+        rotationSpeed *= 1.5f;
+        yield return new WaitForSeconds(3f);
+        speed /= 1.5f;
+        rotationSpeed /= 1.5f;
     }
 }
