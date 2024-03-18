@@ -39,13 +39,16 @@ public class MainMenuCanvas : MonoBehaviour
 
     private string ConvertHighscoreToTime()
     {
-        int highscore = DataManager.Instance.highscoreTime;
+        float highscore = DataManager.Instance.highscoreTime;
         if(highscore == 1000)
         {
             return "Highscore: None";
         }
-        string minutes = Mathf.Floor(highscore / 60).ToString("00");
-        string seconds = (highscore % 60).ToString("00");
-        return $"Highscore: {minutes}:{seconds}";
+        int minutes = Mathf.FloorToInt(highscore / 60);
+        int seconds = Mathf.FloorToInt(highscore % 60);
+        int milliseconds = Mathf.FloorToInt((highscore * 1000) % 1000);
+
+        string timerString = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
+        return "Time: " + timerString;
     }
 }

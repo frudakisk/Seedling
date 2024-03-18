@@ -7,7 +7,7 @@ using System.IO;
 public class DataManager : MonoBehaviour
 {
     public static DataManager Instance;
-    public int highscoreTime = 1000;
+    public float highscoreTime = 1000;
 
     private AudioSource audioSource;
     private bool songPlaying;
@@ -74,7 +74,7 @@ public class DataManager : MonoBehaviour
     [System.Serializable]
     class SaveData
     {
-        public int highscoreTime;
+        public float highscoreTime;
     }
 
 }

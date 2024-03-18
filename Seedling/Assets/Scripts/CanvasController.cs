@@ -15,7 +15,7 @@ public class CanvasController : MonoBehaviour
     public Button resetButton;
     public GameObject gameOverPanel;
 
-    private int timer;
+    private float timer;
     private bool routineOn;
 
     private bool panelActive;
@@ -56,17 +56,6 @@ public class CanvasController : MonoBehaviour
         }
     }
 
-    private IEnumerator Timer()
-    {
-        while(!GameManager.gameOver)
-        {
-            UpdateTimer(timer);
-            yield return new WaitForSeconds(1.0f);
-            timer++;
-        }
-
-    }
-
     private IEnumerator ShowGameOverPanel()
     {
         if(player.playerWon)
@@ -82,11 +71,25 @@ public class CanvasController : MonoBehaviour
         
     }
 
+    private IEnumerator Timer()
+    {
+        while (!GameManager.gameOver)
+        {
+            yield return null;
+            timer += Time.deltaTime;
+            UpdateTimer(timer);
+        }
+
+    }
+
     private void UpdateTimer(float time)
     {
-        string minutes = Mathf.Floor(time / 60).ToString("00");
-        string seconds = (time % 60).ToString("00");
-        timerText.text = $"Time: {minutes}:{seconds}";
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time % 60);
+        int milliseconds = Mathf.FloorToInt((time * 1000) % 1000);
+
+        string timerString = string.Format("{0:00}:{1:00}:{2:000}", minutes, seconds, milliseconds);
+        timerText.text = "Time: " + timerString;
     }
 
     public void ResetGame()

@@ -65,9 +65,7 @@ public class RootController : MonoBehaviour
         {
             Debug.Log("player hit a rock or wall. Game Over!");
             GameManager.gameOver = true;
-            Vector3 offset = new Vector3(0, 0.5f, 0);
-            ParticleSystem particles = Instantiate(explosionParticles, transform.position + offset, Quaternion.identity);
-            particles.Play();
+            PlayParticles();
         } else if (collision.gameObject.CompareTag("water")
             && collision.gameObject.GetComponent<WaterHoleBehaviour>().hasWater)
         {
@@ -108,10 +106,18 @@ public class RootController : MonoBehaviour
             else
             {
                 Debug.Log("timer is larger than transitionDuration");
+                PlayParticles();
                 GameManager.gameOver = true;
             }
             yield return null;
         }
         spriteRenderer.color = endColor;
+    }
+
+    private void PlayParticles()
+    {
+        Vector3 offset = new Vector3(0, 0.5f, 0);
+        ParticleSystem particles = Instantiate(explosionParticles, transform.position + offset, Quaternion.identity);
+        particles.Play();
     }
 }
